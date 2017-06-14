@@ -48,7 +48,7 @@ $(document).ready(function () {
                     self.addCard(new Card(prompt("Enter the name of the card")));
             });
             
-            $column.append($columnTitle)
+            $column.attr('id', self.id).append($columnTitle)
                 .append($columnDelete)
                 .append($columnAddCard)
                 .append($columnCardList);
@@ -76,14 +76,14 @@ $(document).ready(function () {
 
         function createCard() {
             var $card = $('<li>').addClass('card'),
-                $cardDescription = $('<p>').addClass('card-description').text(self.description),
+                $cardDescription = $('<span>').addClass('card-description').text(self.description),
                 $cardDelete = $('<button>').addClass('btn-delete').text('x');
             
             $cardDelete.click(function(){
                     self.removeCard();
             });
             
-            $card.append($cardDelete)
+            $card.attr('id', self.id).append($cardDelete)
                 .append($cardDescription);
             return $card;
         }
